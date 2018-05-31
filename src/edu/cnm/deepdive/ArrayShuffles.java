@@ -205,4 +205,33 @@ public class ArrayShuffles {
       deck[source] = temp;
     }
   }
+
+  /**
+   * Shuffles deck with default source of randomness. Invokes {@link
+   * #shuffle(double[], Random)}.
+   * 
+   * @param deck data array.
+   */
+  
+  public static <T> void shuffle(T[] deck) {
+    shuffle(deck, new Random());
+  }
+
+  /**
+   * Shuffles deck using Fisher-Yates algorithm with specified source of 
+   * randomness.
+   * 
+   * @param deck data array.
+   * @param rng source of randomness.
+   */
+  
+  public static <T> void shuffle(T[] deck, Random rng) {
+    for(int i = deck.length - 1; i > 0; i--) {
+      int source = rng.nextInt(i + 1);
+      T temp = deck[i]; 
+      deck[i] = deck[source];
+      deck[source] = temp;
+    }
+  }
+
 }
